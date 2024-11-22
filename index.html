@@ -8,36 +8,61 @@
     <link rel="stylesheet" href="/estilos.css">
 </head>
 <body>
-    <div class="container ">
-        <form name="calculator" class="calculator">
-            <h3 class="text-center">Calculadora</h3>
+    <div class="container">
+        <form name="calculator" class="calculator text-center">
+            <input class="custom-mostrar form-control mb-3" type="text" name="ans" id="Mostrar" readonly>
+
             
-            <input class="custom-mostrar" type="textfield" name="ans" value="" id="Mostrar">
-                <input type="button" value = "1" class="btn">
-                <input type="button" value = "2" class="btn">
-                <input type="button" value = "3" class="btn">
-                <input type="button" value = "+" class="btn">
-                <br>
-                <input type="button" value="4" class="btn">
-                <input type="button" value="5" class="btn">
-                <input type="button" value="6" class="btn">
-                <input type="button" value="-" class="btn" >
-                <br>
-                <input type="button" value="7" class="btn">
-                <input type="button" value="8" class="btn">
-                <input type="button" value="9" class="btn">
-                <input type="button" value="*" class="btn">
-                <br>
-                <input type="button" value="0" class="btn">
-                <input type="reset" value="C">
-                <input type="button" value="/" class="btn">
-                <input type="button" value="=" onClick=" document.calculator.ans.value = eval(document.calculator.ans.value)">
+            <div class="d-flex justify-content-center">
+                <input type="button" value="%" class="btn btn-secondary">
+                <input type="button" value="CE" class="btn btn-secondary">
+                <input type="button" value="C" class="btn btn-danger">
+                <input type="button" value="⌫" id="btnBackspace" class="btn btn-secondary" title="Borrar">
+                
+            </div>
+
+            <div class="d-flex justify-content-center">
+                
+                <input type="button" value="x²" class="btn btn-secondary" title="Elevar al cuadrado">
+                <input type="button" value="√" class="btn btn-secondary" title="Raíz cuadrada">    
+                <input type="button" value="/" class="btn btn-primary">
+                
+            </div>
             
+            <div class="d-flex justify-content-center">
+                <input type="button" value="7" class="btn btn-secondary">
+                <input type="button" value="8" class="btn btn-secondary">
+                <input type="button" value="9" class="btn btn-secondary">
+                <input type="button" value="*" class="btn btn-primary">
+            </div>
+
+            
+            <div class="d-flex justify-content-center">
+                <input type="button" value="4" class="btn btn-secondary">
+                <input type="button" value="5" class="btn btn-secondary">
+                <input type="button" value="6" class="btn btn-secondary">
+                <input type="button" value="-" class="btn btn-primary">
+            </div>
+
+            
+            <div class="d-flex justify-content-center">
+                <input type="button" value="1" class="btn btn-secondary">
+                <input type="button" value="2" class="btn btn-secondary">
+                <input type="button" value="3" class="btn btn-secondary">
+                <input type="button" value="+" class="btn btn-primary">
+            </div>
+
+           
+            <div class="d-flex justify-content-center">
+                <input type="button" value="+/-" class="btn btn-secondary">
+                <input type="button" value="0" class="btn btn-secondary">
+                <input type="button" value="." class="btn btn-secondary">
+                <input type="button" value="=" class="btn btn-success">
+            </div>
         </form>
     </div>
-    
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="/script.js">
-        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
