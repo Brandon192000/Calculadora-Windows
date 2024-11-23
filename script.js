@@ -1,4 +1,5 @@
 const valorIngresado = document.getElementById('Mostrar');
+
 const botones = document.querySelectorAll('.btn');
 
 // Funcion para agregar valores al input
@@ -11,7 +12,7 @@ for (let i = 0; i < botones.length; i++) {
     botones[i].addEventListener("click", function () {
         const valor = botones[i].value;
 
-        if (valor === "=" || valor === "C" || valor === "CE" || valor === "+/-" || valor === "⌫" || valor === "√" || valor === "x²") {
+        if (valor === "=" || valor === "C" || valor === "CE" || valor === "+/-" || valor === "⌫" || valor === "√" || valor === "x²" || valor === "x²") {
             operaciones(valor);
         } else {
             agregarValor(valor);
@@ -81,6 +82,21 @@ function operaciones(valor) {
                 valorIngresado.value = ""; // 
             }
 
+            break;
+
+        case "1/x": /* esto en la calculadora de windows segun lo que investigue saca el inverso multiplicativo o el receproco*/ 
+
+            try {
+                const numero = parseFloat(valorIngresado.value);
+                if (numero === 0) {
+                    alert("No se puede dividir entre cero");
+                } else {
+                    valorIngresado.value = 1 / numero; // Calcula el recíproco
+                }
+            } catch (error) {
+                alert("Numero invalido ");
+            }
+            
             break;
 
         default:
