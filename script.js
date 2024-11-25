@@ -1,5 +1,7 @@
 const valorIngresado = document.getElementById('Mostrar');
 
+const operacionIngresada = document.getElementById('Operacion');
+
 const botones = document.querySelectorAll('.btn');
 
 // Funcion para agregar valores al input
@@ -12,7 +14,7 @@ for (let i = 0; i < botones.length; i++) {
     botones[i].addEventListener("click", function () {
         const valor = botones[i].value;
 
-        if (valor === "=" || valor === "C" || valor === "CE" || valor === "+/-" || valor === "⌫" || valor === "√" || valor === "x²" || valor === "x²") {
+        if (valor === "=" || valor === "C" || valor === "CE" || valor === "+/-" || valor === "⌫" || valor === "√" || valor === "x²" || valor === "1/x" || valor === "%") {
             operaciones(valor);
         } else {
             agregarValor(valor);
@@ -28,15 +30,20 @@ function operaciones(valor) {
 
             // Limpiar el campo de entrada
             valorIngresado.value = "";
+            operacionIngresada.value = ""; 
             break;
 
         case "=":
 
             try {
-                valorIngresado.value = eval(valorIngresado.value); /* eval evalua una cadena de texto como una expresion matematica y retorna el resultado */
+                const resultado = eval(valorIngresado.value);  /* eval evalua una cadena de texto como una expresion matematica y retorna el resultado */
+                operacionIngresada.value = valorIngresado.value + " =";
+                valorIngresado.value = resultado;
+
             } catch (error) {
                 alert("Dato ingresado no valido");
                 valorIngresado.value = "";
+                operacionIngresada.value = "";
             }
 
             break;
@@ -64,6 +71,7 @@ function operaciones(valor) {
                     alert("No se puede calcular la raiz cuadrada de un numero negativo");
                     return;
                 }
+                operacionIngresada.value = `√(${numero})`;
                 valorIngresado.value = Math.sqrt(numero); /* math.sqrt da la raiz de el numero digitado por el usuario */
             } catch (error) {
                 alert("Numero invalido para la raiz cuadrada");
@@ -76,6 +84,7 @@ function operaciones(valor) {
         
             try {
                 const numero = parseFloat(valorIngresado.value || 0);
+                operacionIngresada.value = `${numero}²`;
                 valorIngresado.value = Math.pow(numero, 2);
             } catch (error) {
                 alert("Numero invalido para elevar al cuadrado");
@@ -91,12 +100,29 @@ function operaciones(valor) {
                 if (numero === 0) {
                     alert("No se puede dividir entre cero");
                 } else {
+                    operacionIngresada.value = `1 / ${numero}`;
                     valorIngresado.value = 1 / numero; // Calcula el recíproco
                 }
             } catch (error) {
                 alert("Numero invalido ");
             }
             
+            break;
+        case "%":
+            
+            try {
+                const numero = parseFloat(valorIngresado.value); // Obtén el número ingresado
+                if (isNaN(numero)) {
+                    alert("Por favor ingrese un numero valido antes de usar %");
+                } else {
+                    valorIngresado.value = numero / 100; // Divide el número entre 100
+                    operacionIngresada.value = `${numero}%`; // Muestra la operación como porcentaje
+                }
+            } catch (error) {
+                alert("Operación inválida");
+                valorIngresado.value = "";
+                operacionIngresada.value = "";
+            }
             break;
 
         default:
